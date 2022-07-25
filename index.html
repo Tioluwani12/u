@@ -1,0 +1,75 @@
+<html>
+  <head>
+    <title>Hand Gesture Web App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+    <script src="https://unpkg.com/ml5@0.4.3/dist/ml5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.26/webcam.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+
+  <body>
+  <div class="container">
+  
+    <center>
+      <h3 class="btn btn-warning heading">HAND GESTURE WEB APP
+        <br>
+       <img src="data:image/png;base64,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" height="30" width="30">
+       <img src="https://w7.pngwing.com/pngs/987/251/png-transparent-thumbs-up-sign-illustration-thumb-signal-emoji-domain-emoticon-smiley-lettuce-emoji-hand-over-sign-thumbnail.png" height="30" width="30">
+       <img src="https://img.huffingtonpost.com/asset/589a0dc025000034080b77e3.png?cache=BPBpcKyGh2&ops=scalefit_720_noupscale" height="30" width="30">
+       <img src="https://mpng.subpng.com/20180326/pkw/kisspng-emoji-hand-ok-thumb-signal-gesture-emoji-5ab87040ec6404.9256367815220368009683.jpg" height="30" width="30">
+       
+
+      </h3>
+      
+
+      <br><br>
+
+      <p style="font-size: 22px;">Take the picture of your hand to see its gesture
+      	<br>
+        <b style="color: rgb(7, 225, 249)">Are you Making Peace?</b>
+        <br>
+        <b style="color: black">Are you Trying to star a war?</b>
+        <br>
+        <b style="color: rgb(0, 255, 13)">Are you celebrating someone?</b>
+        <br>
+      </p>
+
+      <div class="col-md-4 col-sm-12 col-xs-12">
+        <label>Webcam View - </label>
+        <div id="camera"></div>
+        <br><br>
+        <button onclick="take_snapshot();" class="btn btn-warning">Capture Image</button>
+      </div>
+
+      <div class="col-md-4 col-sm-12 col-xs-12">
+        <label>Prediction 1 - </label>
+        <p class="emotion_name" id="result_emotion_name"></p>
+        <p class="emoji" id="update_emoji"></p>
+
+        <label>Prediction 2 - </label>
+        <p class="emotion_name" id="result_emotion_name2"></p>
+        <p class="emoji" id="update_emoji2"></p>
+      </div>
+
+      <div class="col-md-4 col-sm-12 col-xs-12">
+        <label>Snapshot - </label>
+        <div id="result"></div>
+        <br><br>
+        <button onclick="check();" class="btn btn-success">Predict Gesture</button>
+      </div>
+
+    </center>
+
+  </div>
+
+<script src="main.js"></script>
+
+  </body>
+</html>
+
+ 
